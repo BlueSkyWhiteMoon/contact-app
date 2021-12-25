@@ -8,9 +8,7 @@ const ContactCard = (props) => {
     <div className="item">
       <img className="ui avatar image" src={user} alt="user" />
       <div className="content">
-        <div className="header" style={{ marginTop: "73px" }}>
-          {name}
-        </div>
+        <div className="header">{name}</div>
         <div>{email}</div>
       </div>
       <i
