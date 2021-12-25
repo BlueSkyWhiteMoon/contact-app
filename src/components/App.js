@@ -12,7 +12,15 @@ function App() {
     console.log(contact);
     setContacts([...contacts, contact]);
   };
+  // data from the localStorage is stored in the variable retriveContacts and
+  // parse the string with JSON.parse() , erzeugt aus einem JSON-formatierten Text
+  // ein entsprechendes Javascript-Objekt
+  useEffect(() => {
+    const retriveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (retriveContacts) setContacts(retriveContacts);
+  }, []);
 
+  // safe data in local storage
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
