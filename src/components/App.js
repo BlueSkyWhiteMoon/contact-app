@@ -11,7 +11,7 @@ function App() {
 
   const addContactHandler = (contact) => {
     console.log(contact);
-    setContacts([...contacts, contact]);
+    setContacts([...contacts, { id: uuid(), ...contacts }]);
   };
   // data from the localStorage is stored in the variable retriveContacts and
   // parse the string with JSON.parse() , erzeugt aus einem JSON-formatierten Text
