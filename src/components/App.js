@@ -10,8 +10,15 @@ function App() {
 
   const addContactHandler = (contact) => {
     console.log(contact);
-    setContacts([...contacts, contact]);
+    setContacts([...contacts, { id: Object.keys(contacts), ...contact }]);
   };
+  const removeContactHandler = (id) => {
+    const newContactList = contacts.filter((contact) => {
+      return contact.id !== id;
+    });
+    setContacts(newContactList);
+  };
+
   // data from the localStorage is stored in the variable retriveContacts and
   // parse the string with JSON.parse() , erzeugt aus einem JSON-formatierten Text
   // ein entsprechendes Javascript-Objekt
@@ -29,7 +36,7 @@ function App() {
     <div className="ui container">
       <Header />
       <AddContact addContactHandler={addContactHandler} />
-      <ContactList contacts={contacts} />
+      <ContactList contacts={contacts} getContactId={removeContactHandler} />
     </div>
   );
 }
